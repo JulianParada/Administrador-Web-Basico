@@ -30,6 +30,47 @@
     <div id="inferior"><?php echo $date ?></div>
 
    <br>
-<a href="index.php">Regresar</a>
+   <a href="index.php">Regresar</a>
+   <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+
+   <?php
+        crear_imagen();
+        echo "<img src=imagen.png?".date("U").">";
+
+        function  crear_imagen(){
+
+                srand(mktime());
+
+                $t1 = rand(150,300);
+                $t2 = rand(150,300);
+                $im = imagecreate($t1, $t2) or die("Error en la creacion de imagenes");
+
+                
+                $c1 = rand(0,255);
+                $c2 = rand(0,255);
+
+                $color_fondo = imagecolorallocate($im, $c1, $c2, 0);   // amarillo
+
+                $c3 = rand(0,255);
+                $c4 = rand(0,255);
+
+                $rojo = imagecolorallocate($im, $c3, 0, 0);                  // rojo
+                $azul = imagecolorallocate($im, 0, 0, $c4);                 // azul
+                imagerectangle ($im,   5,  10, 195, 50, $rojo); //rectangulo (borde)
+                imagefilledrectangle ($im,   5,  100, 195, 140, $azul); //rectangulo (lleno)
+
+                imagepng($im,"imagen.png");
+                imagedestroy($im);
+        }
+        ?>
+    <br>
+    <br>
+
 </body>
 </html>
